@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM ARMY OFFICIAL</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1120440566990536');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1120440566990536&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #08090c;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Canvas Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Main Card Container */
+        .card-container {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 420px;
+            background: linear-gradient(145deg, #12151e, #0a0c10);
+            border: 1px solid rgba(0, 162, 255, 0.2);
+            border-radius: 28px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 30px rgba(0, 162, 255, 0.15);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Profile Image Animation */
+        .profile-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00d2ff;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); transform: scale(1); }
+            100% { box-shadow: 0 0 30px rgba(0, 210, 255, 0.9); transform: scale(1.03); }
+        }
+
+        /* Category Tag */
+        .badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid #00d2ff;
+            color: #00d2ff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Title */
+        .title {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #00d2ff;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .features-list {
+            font-size: 12px;
+            color: #a0a5b5;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* CTA Button */
+        .btn-join {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, #0088cc, #00d2ff);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            animation: btnPulse 2s infinite;
+        }
+
+        @keyframes btnPulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(0, 210, 255, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
+        }
+
+        .btn-join:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.7);
+        }
+
+        /* Disclaimer Text */
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 10px;
+            color: #6c757d;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 16px;
+            color: #00d2ff;
+        }
+
+        .stat-item p {
+            font-size: 9px;
+            color: #8a8f9d;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* Honeypot link for Bots (Invisible) */
+        .fake-bot-link {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Invisible Honeypot Link for Crawlers/Bots -->
+    <a href="http://example.com/bot-trap" class="fake-bot-link" rel="nofollow">Bot Link</a>
+
+    <!-- Main Card -->
+    <div class="card-container">
+        
+        <div class="profile-wrapper">
+            <!-- 5458.png लोगो/डीपी का संदर्भ -->
+            <img src="5458.png" alt="Profile" class="profile-img">
+        </div>
+
+        <div class="badge">
+            <i class="fa-solid fa-shield-halved"></i> COMMUNITY & STRATEGY
+        </div>
+
+        <h1 class="title">𝐒𝐘𝐒𝐓𝐄𝐌 𝐀𝐑𝐌𝐘 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋</h1>
+        
+        <p class="subtitle">🔥 Premium Community Access 🔥</p>
+        
+        <p class="features-list">
+            Market Trends • Strategy Discussions • Community Insights • Daily Updates
+        </p>
+
+        <!-- Dynamic Safe Link -->
+        <a id="telegram-btn" class="btn-join" href="#">
+            <i class="fa-brands fa-telegram" style="font-size: 20px;"></i> JOIN TELEGRAM <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <div class="disclaimer">
+            Entertainment & community purposes only. No guaranteed results or profits.
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Community Access</p>
+            </div>
+            <div class="stat-item">
+                <h3>15K+</h3>
+                <p>Members</p>
+            </div>
+            <div class="stat-item">
+                <h3>LIVE</h3>
+                <p>Daily Updates</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript: Particle Effect & Bot Shield -->
+    <script>
+        // --- 1. Background Particle Canvas Animation ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(0, 210, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 50; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+
+        // --- 2. Advanced Meta Bot & Fake Click Protection System ---
+        const realTelegramLink = "https://t.me/+JeZBzpOl5r42YmRl";
+        let isRealHuman = false;
+
+        // Detection function for known Crawlers / Automated Headless Browsers
+        function isBotDetected() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const botKeywords = [
+                'facebookexternalhit', 'facebot', 'meta-externalagent', 'bot', 'crawler',
+                'spider', 'headlesschrome', 'phantomjs', 'selenium', 'puppeteer'
+            ];
+
+            // 1. Check User-Agent String
+            for (let keyword of botKeywords) {
+                if (userAgent.includes(keyword)) return true;
+            }
+
+            // 2. Check Headless Browser properties
+            if (navigator.webdriver) return true;
+
+            return false;
+        }
+
+        // Verify human interaction before injecting original URL
+        function verifyHumanInteraction() {
+            if (!isRealHuman && !isBotDetected()) {
+                isRealHuman = true;
+                const btn = document.getElementById('telegram-btn');
+                btn.href = realTelegramLink;
+            }
+        }
+
+        // Track user mouse, touch, or key actions
+        window.addEventListener('mousemove', verifyHumanInteraction, { once: true });
+        window.addEventListener('touchstart', verifyHumanInteraction, { once: true });
+        window.addEventListener('scroll', verifyHumanInteraction, { once: true });
+
+        // Click Handler Safeguard
+        document.getElementById('telegram-btn').addEventListener('click', function(e) {
+            if (isBotDetected() || !isRealHuman) {
+                e.preventDefault();
+                console.warn("Automated / Fake click blocked!");
+                // Optionally redirect bots to a blank page or dummy URL
+                window.location.href = "about:blank";
+            } else {
+                // Track Facebook Pixel Event on Real Click
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
